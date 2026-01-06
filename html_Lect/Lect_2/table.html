@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML Table Example</title>
+</head>
+<body>
+
+  <!-- Table heading -->
+  <h2>Student Marks Table</h2>
+
+  <!-- Table start -->
+  <table border="1" cellpadding="10" cellspacing="0">
+
+    <!-- Table title -->
+    <caption><b>Final Exam Result</b></caption>
+
+    <!-- Table header -->
+    <thead>
+      <tr>
+        <th rowspan="2">Roll No</th>
+        <th rowspan="2">Name</th>
+        <th colspan="3">Subjects</th>
+        <th rowspan="2">Total</th>
+      </tr>
+      <tr>
+        <th>HTML</th>
+        <th>CSS</th>
+        <th>JavaScript</th>
+      </tr>
+    </thead>
+
+    <!-- Table body -->
+    <tbody>
+      <tr>
+        <td>101</td>
+        <td>Rohit</td>
+        <td>85</td>
+        <td>78</td>
+        <td>90</td>
+        <td>253</td>
+      </tr>
+      <tr>
+        <td>102</td>
+        <td>Anjali</td>
+        <td>88</td>
+        <td>82</td>
+        <td>91</td>
+        <td>261</td>
+      </tr>
+      <tr>
+        <td>103</td>
+        <td>Mohit</td>
+        <td>70</td>
+        <td>75</td>
+        <td>80</td>
+        <td>225</td>
+      </tr>
+    </tbody>
+
+    <!-- Table footer -->
+    <tfoot>
+      <tr>
+        <td colspan="5"><b>Class Average</b></td>
+        <td><b>246</b></td>
+      </tr>
+    </tfoot>
+
+  </table>
+
+</body>
+</html>
