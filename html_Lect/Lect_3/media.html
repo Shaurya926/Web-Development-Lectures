@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Div vs Span & Media Tags</title>
+
+  <!-- Basic CSS -->
+  <style>
+
+    /* DIV styling */
+    .box {
+      background-color: lightblue;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 2px solid blue;
+    }
+
+    /* SPAN styling */
+    .highlight {
+      color: red;
+      font-weight: bold;
+      background-color: yellow;
+    }
+
+    /* Image styling */
+    img {
+      width: 200px;
+      border: 2px solid black;
+    }
+
+    /* Video styling */
+    video {
+      width: 300px;
+      border: 3px solid green;
+    }
+
+    /* Audio styling */
+    audio {
+      margin-top: 10px;
+    }
+
+    /* Iframe styling */
+    iframe {
+      width: 300px;
+      height: 200px;
+      border: 2px solid red;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= DIV vs SPAN ================= -->
+
+  <h2>DIV vs SPAN</h2>
+
+  <!-- DIV is block-level element -->
+  <div class="box">
+    This is a DIV element.  
+    DIV poori line leta hai.
+  </div>
+
+  <!-- SPAN is inline element -->
+  <p>
+    This is a paragraph with 
+    <span class="highlight">SPAN element</span> inside text.
+  </p>
+
+  <hr>
+
+  <!-- ================= MEDIA TAGS ================= -->
+
+  <h2>Media Tags</h2>
+
+  <!-- Image tag -->
+  <h3>Image</h3>
+  <img src="https://via.placeholder.com/200" alt="Sample Image">
+
+  <br><br>
+
+  <!-- Video tag -->
+  <h3>Video</h3>
+  <video controls>
+    <source src="sample.mp4" type="video/mp4">
+    Your browser does not support video.
+  </video>
+
+  <br><br>
+
+  <!-- Audio tag -->
+  <h3>Audio</h3>
+  <audio controls>
+    <source src="sample.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+  <br><br>
+
+  <!-- Iframe tag -->
+  <h3>Iframe</h3>
+  <iframe src="https://www.wikipedia.org"></iframe>
+
+</body>
+</html>
