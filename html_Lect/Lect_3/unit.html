@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSS Units Example</title>
+
+  <!-- Internal CSS -->
+  <style>
+
+    /* ===== ABSOLUTE UNIT ===== */
+    .px-box {
+      width: 200px;           /* fixed size */
+      height: 100px;
+      background-color: lightcoral;
+      margin-bottom: 20px;
+    }
+
+    /* ===== PERCENTAGE UNIT ===== */
+    .percent-box {
+      width: 50%;             /* parent ke according */
+      height: 80px;
+      background-color: lightgreen;
+      margin-bottom: 20px;
+    }
+
+    /* Parent for % example */
+    .parent {
+      width: 400px;
+      border: 2px solid black;
+      padding: 10px;
+    }
+
+    /* ===== EM UNIT ===== */
+    .em-text {
+      font-size: 2em;         /* parent ke font-size pe depend */
+      margin-bottom: 20px;
+    }
+
+    /* ===== REM UNIT ===== */
+    html {
+      font-size: 16px;        /* root font-size */
+    }
+
+    .rem-text {
+      font-size: 2rem;        /* root (html) ke according */
+      margin-bottom: 20px;
+    }
+
+    /* ===== VIEWPORT WIDTH & HEIGHT ===== */
+    .vw-vh-box {
+      width: 50vw;            /* screen width ka 50% */
+      height: 20vh;           /* screen height ka 20% */
+      background-color: lightblue;
+      margin-bottom: 20px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <h2>CSS Units Example</h2>
+
+  <!-- PX example -->
+  <h3>1. PX (Fixed Unit)</h3>
+  <div class="px-box">200px × 100px</div>
+
+  <!-- % example -->
+  <h3>2. Percentage (%)</h3>
+  <div class="parent">
+    Parent width = 400px
+    <div class="percent-box">50% width</div>
+  </div>
+
+  <!-- EM example -->
+  <h3>3. EM Unit</h3>
+  <div style="font-size: 20px;">
+    Parent font-size = 20px
+    <p class="em-text">2em = 40px</p>
+  </div>
+
+  <!-- REM example -->
+  <h3>4. REM Unit</h3>
+  <p class="rem-text">2rem = 32px (root based)</p>
+
+  <!-- VW & VH example -->
+  <h3>5. VW & VH</h3>
+  <div class="vw-vh-box">
+    Width = 50vw <br>
+    Height = 20vh
+  </div>
+
+</body>
+</html>
