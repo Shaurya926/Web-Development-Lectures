@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Display Properties Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      margin-top: 40px;
+    }
+
+    .box {
+      background-color: crimson;
+      color: white;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    /* 1. block */
+    .block {
+      display: block;
+      width: 200px;
+      height: 80px;
+    }
+
+    /* 2. inline */
+    .inline {
+      display: inline;
+      background-color: green;
+      width: 200px;   /* ignore hoga */
+      height: 80px;   /* ignore hoga */
+    }
+
+    /* 3. inline-block */
+    .inline-block {
+      display: inline-block;
+      background-color: orange;
+      width: 200px;
+      height: 80px;
+    }
+
+    /* 4. none */
+    .none {
+      display: none;
+    }
+
+    /* 5. visibility hidden */
+    .hidden {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CSS Display Properties</h1>
+
+  <h2>1. display: block</h2>
+  <div class="box block">I am Block</div>
+  <div class="box block">Next Block</div>
+
+  <h2>2. display: inline</h2>
+  <span class="box inline">Inline 1</span>
+  <span class="box inline">Inline 2</span>
+
+  <h2>3. display: inline-block</h2>
+  <span class="box inline-block">Inline-Block 1</span>
+  <span class="box inline-block">Inline-Block 2</span>
+
+  <h2>4. display: none</h2>
+  <div class="box none">You cannot see me</div>
+  <p>Above element is removed from layout</p>
+
+  <h2>5. visibility: hidden</h2>
+  <div class="box hidden">I am hidden</div>
+  <p>Space is still reserved</p>
+
+</body>
+</html>
