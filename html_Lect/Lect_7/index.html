@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox Parent Properties Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        /* @media screen and (min-width: 600px) {
+    body {
+        background: lightcoral;
+    } */
+        /* } */
+
+
+        /* FLEX PARENT */
+        .container {
+            display: flex;
+            /* flex-direction:column-reverse; */
+
+            /* justify-content: space-around; */
+            align-items: center;
+            /* flex-wrap: wrap; */
+            align-content: space-between;
+            gap: 2px;
+
+            height: 400px;
+            padding: 20px;
+            border: 3px solid black;
+            background: white;
+        }
+
+        /* FLEX CHILD */
+        .box {
+            width: 120px;
+            height: 120px;
+            background: steelblue;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #one {
+            /* flex-basis: 200px; */
+            /* flex-grow: ; */
+            /* flex-grow: 1; */
+            flex-shrink: 2;
+        }
+
+        #two {
+            /* flex-grow: 3; */
+            flex-shrink: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Flexbox Parent Properties Demo</h2>
+
+    <div class="container">
+        <div class="box" id="one">1</div>
+        <div class="box" id="two">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+        <div class="box">7</div>
+        <div class="box">8</div>
+    </div>
+
+</body>
+
+</html>
