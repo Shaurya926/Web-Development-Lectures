@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  background:#f0f0f0;
+}
+
+.container{
+  width:200px;
+  height:100%;
+  position:relative;
+}
+
+.ball{
+  width:60px;
+  height:60px;
+  background: linear-gradient(135deg,red,blue,pink);
+  border: 2px solid rgb(30, 30, 34);
+  border-radius:50%;
+  position:absolute;
+  bottom:0;
+  left:70px;
+
+  animation:bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce{
+  0%{
+    bottom:0;
+  }
+  50%{
+    bottom:90%;
+  }
+  100%{
+    bottom:0;
+  }
+  0%{
+    transform:rotateY(0deg);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="ball"></div>
+</div>
+
+</body>
+</html>
