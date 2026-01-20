@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  background:#f0f0f0;
+}
+
+.container{
+  width:200px;
+  height:100%;
+  position:relative;
+}
+.Pokeball{
+  width:60px;
+  height:60px;
+  background: linear-gradient(135deg,rgb(249, 3, 3),rgb(249, 3, 3),rgb(249, 3, 3),rgb(0, 0, 0),rgb(248, 245, 245),rgb(255, 255, 255),rgb(255, 255, 255));
+  border: 3px solid rgb(30, 30, 34);
+  border-radius:50%;
+  position:absolute;
+  bottom:0;
+  left:70px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+  animation:bounce 4s infinite ease-in-out;
+}
+
+@keyframes bounce{
+  0%{
+    bottom:0;
+  }
+  50%{
+      transform:rotate(180deg);
+      bottom:90%;
+    }
+    100%{
+      transform:rotate(720deg);
+    bottom:0;
+  }
+
+}
+.Pokeball p{
+ height: 20px;
+ width: 20px;
+ text-align: center;
+ background-color: #f0f0f0;
+ border-radius: 50%;
+ border:2px solid black;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="Pokeball"><p></p></div>
+    </div>
+</body>
+</html>
