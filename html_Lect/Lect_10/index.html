@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.parent{
+  border: 3px solid ;
+  height: 700px;
+  display: grid;
+  overflow: hidden;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 200px  200px;
+  /* grid-auto-flow: column; */
+}
+.child{
+  background-color: burlywood;
+  border: 1px solid brown;
+  overflow: hidden;  
+}
+
+#one{
+  background-color: aqua;
+}
+#two{
+  background-color: gold;
+}
+#four{
+  background-color: red;
+  grid-row: span 2;
+}
+.child img{
+  height: 100%;
+  width: 100%;
+  /* object-fit: cover; */
+  background-size: cover;
+  transition: transform 0.4s ease; 
+}
+.child:hover img{
+  transform: scale(1.2);
+  filter: blur(2px);
+}
+
+    </style>
+</head>
+<body>
+   
+  <!-- <h2>idher dekhoo</h2> -->
+        <div class="parent">
+          <div class="child" id="one"><img  src="https://images.unsplash.com/photo-1768391267094-b5c289a0b395?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1fHx8ZW58MHx8fHx8"/></div>
+          <div class="child" id="two">2</div>
+          <div class="child" id="three">3</div>
+          <div class="child" id="four"><img  src="https://plus.unsplash.com/premium_photo-1766012368356-69b7ee24081d?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/></div>
+          <div class="child" id="five">5</div>
+          <div class="child" id="six">6</div>
+          <div class="child" id="seven">7</div>
+          <div class="child" id="eight">8</div>
+          <div class="child" id="nine">9</div>
+          <div class="child" id="ten">10</div>
+        </div>
+    
+</body>
+</html>
