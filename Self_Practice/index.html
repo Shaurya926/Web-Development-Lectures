@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah - Designer & Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: 'hsl(0 0% 100%)',
+                        foreground: 'hsl(0 0% 8%)',
+                        card: 'hsl(0 0% 100%)',
+                        'card-foreground': 'hsl(0 0% 8%)',
+                        primary: 'hsl(0 0% 12%)',
+                        'primary-foreground': 'hsl(0 0% 98%)',
+                        secondary: 'hsl(35 30% 94%)',
+                        'secondary-foreground': 'hsl(0 0% 12%)',
+                        muted: 'hsl(0 0% 96%)',
+                        'muted-foreground': 'hsl(0 0% 45%)',
+                        accent: 'hsl(12 80% 60%)',
+                        'accent-foreground': 'hsl(0 0% 100%)',
+                        highlight: 'hsl(174 60% 45%)',
+                        border: 'hsl(0 0% 90%)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.6s ease-out forwards',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .text-gradient {
+            background: linear-gradient(135deg, hsl(12 80% 60%), hsl(174 60% 45%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .link-underline {
+            position: relative;
+            display: inline-block;
+        }
+
+        .link-underline:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 0;
+            background-color: hsl(12 80% 60%);
+            transition: width 0.3s ease;
+        }
+
+        .link-underline:hover:after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased bg-background text-foreground">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex items-center justify-between">
+                <a href="#home" class="text-2xl font-bold tracking-tight">
+                    Port<span class="text-accent">folio</span>
+                </a>
+                <ul class="hidden md:flex items-center gap-8">
+                    <li><a href="#home"
+                            class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors link-underline">Home</a>
+                    </li>
+                    <li><a href="#about"
+                            class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors link-underline">About</a>
+                    </li>
+                    <li><a href="#work"
+                            class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors link-underline">Work</a>
+                    </li>
+                    <li><a href="#skills"
+                            class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors link-underline">Skills</a>
+                    </li>
+                    <li><a href="#contact"
+                            class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors link-underline">Contact</a>
+                    </li>
+                </ul>
+                <div class="hidden md:flex items-center gap-3">
+                    <button
+                        class="inline-flex items-center justify-center gap-2 rounded-lg h-11 w-11 hover:bg-secondary transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <path
+                                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41">
+                            </path>
+                        </svg>
+                    </button>
+                    <button
+                        class="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-4 text-xs font-semibold shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                        Let's Talk
+                    </button>
+                </div>
+                <button class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+
+    <section id="home" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <div class="absolute top-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-1/4 left-0 w-80 h-80 bg-highlight/5 rounded-full blur-3xl -z-10"></div>
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8 text-center lg:text-left">
+                    <div class="space-y-4">
+                        <p class="text-accent font-medium tracking-wide uppercase text-sm animate-fade-up"
+                            style="animation-delay: 0.1s;">Welcome to my portfolio</p>
+                        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-up"
+                            style="animation-delay: 0.2s;">
+                            Hi, I'm <span class="font-display italic text-gradient">Shaurya Dubey</span><br>
+                            <span class="text-muted-foreground">Designer & Developer</span>
+                        </h1>
+                        <p class="text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0 animate-fade-up"
+                            style="animation-delay: 0.3s;">
+                            I create beautiful digital experiences that combine stunning design with clean, efficient
+                            code. Let's build something amazing together.
+                        </p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-up"
+                        style="animation-delay: 0.4s;">
+                        <button
+                            class="inline-flex items-center justify-center bg-primary text-primary-foreground hover:bg-primary/90 h-12 rounded-lg px-8 text-base font-semibold gap-2 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                            View My Work
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 5v14M19 12l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <button
+                            class="inline-flex items-center justify-center border-2 border-border bg-background hover:border-primary hover:bg-primary/5 h-12 rounded-lg px-8 text-base font-semibold gap-2 transition-all">
+                            Download Resume
+                        </button>
+                    </div>
+                    <div class="flex gap-4 justify-center lg:justify-start animate-fade-up"
+                        style="animation-delay: 0.5s;">
+                        <a href="#"
+                            class="p-3 rounded-full border border-border hover:border-accent hover:text-accent transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                                </path>
+                                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="p-3 rounded-full border border-border hover:border-accent hover:text-accent transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect width="4" height="12" x="2" y="9"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="p-3 rounded-full border border-accent hover:border-accent hover:text-accent transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="relative flex justify-center lg:justify-end animate-fade-up" style="animation-delay: 0.3s;">
+                    <div class="relative">
+                        <div class="absolute -inset-4 border-2 border-dashed border-accent/30 rounded-full animate-spin"
+                            style="animation-duration: 20s;"></div>
+                        <div
+                            class="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-background shadow-xl bg-gradient-to-br from-accent to-highlight">
+                        </div>
+                        <div class="absolute -right-4 top-1/4 bg-card p-4 rounded-2xl shadow-lg border border-border">
+                            <p class="text-3xl font-bold text-accent">5+</p>
+                            <p class="text-xs text-muted-foreground">Years Exp.</p>
+                        </div>
+                        <div class="absolute -left-4 bottom-1/4 bg-card p-4 rounded-2xl shadow-lg border border-border">
+                            <p class="text-3xl font-bold text-highlight">50+</p>
+                            <p class="text-xs text-muted-foreground">Projects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-secondary/30">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16 space-y-4">
+                    <p class="text-accent font-medium tracking-wide uppercase text-sm">About Me</p>
+                    <h2 class="text-4xl md:text-5xl font-bold">Passionate about creating <span
+                            class="font-display italic text-gradient">digital magic</span></h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                    <div class="space-y-6">
+                        <p class="text-lg text-muted-foreground leading-relaxed">
+                            I'm a creative designer and developer with over 5 years of experience building digital
+                            products. I believe great design is about solving problems while creating delightful
+                            experiences.
+                        </p>
+                        <p class="text-lg text-muted-foreground leading-relaxed">
+                            When I'm not coding or designing, you'll find me exploring new technologies, reading design
+                            blogs, or enjoying a good cup of coffee. I'm always excited to take on new challenges and
+                            collaborate on interesting projects.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div
+                            class="p-6 bg-card rounded-2xl border border-border text-center hover:-translate-y-2 transition-transform">
+                            <p class="text-4xl font-bold text-accent mb-2">50+</p>
+                            <p class="text-sm text-muted-foreground">Projects Completed</p>
+                        </div>
+                        <div
+                            class="p-6 bg-card rounded-2xl border border-border text-center hover:-translate-y-2 transition-transform">
+                            <p class="text-4xl font-bold text-highlight mb-2">30+</p>
+                            <p class="text-sm text-muted-foreground">Happy Clients</p>
+                        </div>
+                        <div
+                            class="p-6 bg-card rounded-2xl border border-border text-center hover:-translate-y-2 transition-transform">
+                            <p class="text-4xl font-bold text-foreground mb-2">5+</p>
+                            <p class="text-sm text-muted-foreground">Years Experience</p>
+                        </div>
+                        <div
+                            class="p-6 bg-card rounded-2xl border border-border text-center hover:-translate-y-2 transition-transform">
+                            <p class="text-4xl font-bold text-foreground mb-2">15+</p>
+                            <p class="text-sm text-muted-foreground">Awards Won</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div
+                        class="p-6 bg-card rounded-2xl border border-border hover:border-accent/50 transition-all hover:-translate-y-2 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+                            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                                <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                                <path
+                                    d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold mb-2">UI/UX Design</h3>
+                        <p class="text-sm text-muted-foreground">Creating beautiful, intuitive interfaces that users
+                            love</p>
+                    </div>
+                    <div
+                        class="p-6 bg-card rounded-2xl border border-border hover:border-accent/50 transition-all hover:-translate-y-2 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+                            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold mb-2">Development</h3>
+                        <p class="text-sm text-muted-foreground">Building robust applications with modern technologies
+                        </p>
+                    </div>
+                    <div
+                        class="p-6 bg-card rounded-2xl border border-border hover:border-accent/50 transition-all hover:-translate-y-2 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+                            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5">
+                                </path>
+                                <path d="M9 18h6M10 22h4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold mb-2">Problem Solving</h3>
+                        <p class="text-sm text-muted-foreground">Finding creative solutions to complex challenges</p>
+                    </div>
+                    <div
+                        class="p-6 bg-card rounded-2xl border border-border hover:border-accent/50 transition-all hover:-translate-y-2 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+                            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z">
+                                </path>
+                                <path
+                                    d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold mb-2">Fast Delivery</h3>
+                        <p class="text-sm text-muted-foreground">Delivering quality work on time, every time</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="work" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 space-y-4">
+                <p class="text-accent font-medium tracking-wide uppercase text-sm">My Work</p>
+                <h2 class="text-4xl md:text-5xl font-bold">Featured <span
+                        class="font-display italic text-gradient">Projects</span></h2>
+                <p class="text-lg text-muted-foreground max-w-2xl mx-auto">A selection of my recent work across web
+                    design, mobile apps, and branding</p>
+            </div>
+            <div class="grid gap-12">
+
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div class="relative group overflow-hidden rounded-2xl">
+                        <div class="w-full aspect-[4/3] bg-gradient-to-br from-accent to-highlight"></div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <button
+                            class="absolute bottom-4 right-4 bg-secondary hover:bg-secondary/80 h-11 w-11 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M7 7h10v10M7 17L17 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-accent text-sm font-medium mb-2">Web Design & Development</p>
+                            <h3 class="text-3xl md:text-4xl font-bold mb-4">Analytics Dashboard</h3>
+                            <p class="text-muted-foreground text-lg">A comprehensive analytics platform with real-time
+                                data visualization and reporting features.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-4 py-1.5 bg-secondary text-secondary-foreground rounded-full text-sm font-medium">React</span>
+                            <span
+                                class="px-4 py-1.5 bg-secondary text-secondary-foreground rounded-full text-sm font-medium">TypeScript</span>
+                            <span
+                                class="px-4 py-1.5 bg-secondary text-secondary-foreground rounded-full text-sm font-medium">Tailwind</span>
+                        </div>
+                        <button
+                            class="inline-flex items-center justify-center border-2 border-border bg-background hover:border-primary hover:bg-primary/5 h-11 px-6 py-2 rounded-lg gap-2 group transition-all">
+                            View Project
+                            <svg class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M7 7h10v10M7 17L17 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="skills" class="py-24 bg-secondary/30">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 space-y-4">
+                <p class="text-accent font-medium tracking-wide uppercase text-sm">My Skills</p>
+                <h2 class="text-4xl md:text-5xl font-bold">Tools & <span
+                        class="font-display italic text-gradient">Technologies</span></h2>
+            </div>
+            <div class="max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 mb-16">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">React</span>
+                            <span class="text-muted-foreground text-sm">95%</span>
+                        </div>
+                        <div class="h-2 bg-border rounded-full overflow-hidden">
+                            <div class="h-full bg-accent rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">TypeScript</span>
+                            <span class="text-muted-foreground text-sm">90%</span>
+                        </div>
+                        <div class="h-2 bg-border rounded-full overflow-hidden">
+                            <div class="h-full bg-accent rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">UI/UX Design</span>
+                            <span class="text-muted-foreground text-sm">92%</span>
+                        </div>
+                        <div class="h-2 bg-border rounded-full overflow-hidden">
+                            <div class="h-full bg-accent rounded-full" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Tailwind CSS</span>
+                            <span class="text-muted-foreground text-sm">95%</span>
+                        </div>
+                        <div class="h-2 bg-border rounded-full overflow-hidden">
+                            <div class="h-full bg-accent rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-xl font-semibold mb-6">Technologies I Work With</h3>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span
+                            class="px-5 py-2.5 bg-card border border-border rounded-full text-sm font-medium hover:border-accent hover:text-accent transition-all cursor-default">React</span>
+                        <span
+                            class="px-5 py-2.5 bg-card border border-border rounded-full text-sm font-medium hover:border-accent hover:text-accent transition-all cursor-default">Next.js</span>
+                        <span
+                            class="px-5 py-2.5 bg-card border border-border rounded-full text-sm font-medium hover:border-accent hover:text-accent transition-all cursor-default">TypeScript</span>
+                        <span
+                            class="px-5 py-2.5 bg-card border border-border rounded-full text-sm font-medium hover:border-accent hover:text-accent transition-all cursor-default">Tailwind
+                            CSS</span>
+                        <span
+                            class="px-5 py-2.5 bg-card border border-border rounded-full text-sm font-medium hover:border-accent hover:text-accent transition-all cursor-default">Figma</span>
+                        <span
+                            class="px-5 py-2.5 bg-card border border-border rounded-full text-sm font-medium hover:border-accent hover:text-accent transition-all cursor-default">Node.js</span>
+                        <span
+                            class="px-5 py-2.5 bg-card border border-border rounded-full text-sm font-medium hover:border-accent hover:text-accent transition-all cursor-default">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 space-y-4">
+                <p class="text-accent font-medium tracking-wide uppercase text-sm">Get In Touch</p>
+                <h2 class="text-4xl md:text-5xl font-bold">Let's Work <span
+                        class="font-display italic text-gradient">Together</span></h2>
+            </div>
+            <div class="max-w-5xl mx-auto">
+                <div class="grid lg:
+
+
+grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-semibold">Contact Information</h3>
+                        <p class="text-muted
+-foreground">Feel free to reach out for collaborations or just a friendly hello!</p>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <p class="text-muted-foreground">
+                                    contact@example.com
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Phone</h4>
+                                <p class="text-muted-foreground">
+                                    +123 456 7890
+                                </p>
+                            </div>
