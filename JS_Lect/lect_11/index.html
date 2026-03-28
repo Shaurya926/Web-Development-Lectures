@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lect_11 Quiz Time!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #1a1f4e;
+      --card: #ffffff;
+      --primary: #3b4fc8;
+      --primary-dark: #2a3ab0;
+      --accent: #6ee7b7;
+      --correct: #d1fae5;
+      --correct-border: #34d399;
+      --wrong: #fee2e2;
+      --wrong-border: #f87171;
+      --option-bg: #f0f4ff;
+      --option-hover: #dce4ff;
+      --text-dark: #1e2352;
+      --text-mid: #4b5563;
+      --text-light: #9ca3af;
+      --timer-bg: #fff3cd;
+      --timer-text: #b45309;
+      --shadow: 0 20px 60px rgba(26, 31, 78, 0.35);
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background decoration */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -120px; left: -120px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(110, 231, 183, 0.08);
+      pointer-events: none;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -100px; right: -80px;
+      width: 350px; height: 350px;
+      border-radius: 50%;
+      background: rgba(59, 79, 200, 0.15);
+      pointer-events: none;
+    }
+
+    .quiz-card {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 36px 40px 32px;
+      width: 100%;
+      max-width: 560px;
+      box-shadow: var(--shadow);
+      position: relative;
+      animation: slideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Header */
+    .quiz-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .quiz-title {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .quiz-title .emoji {
+      font-size: 1.5rem;
+    }
+
+    /* Meta row: score + timer */
+    .quiz-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .score-badge {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+
+    .timer-badge {
+      background: var(--timer-bg);
+      color: var(--timer-text);
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .timer-badge .clock-icon {
+      font-size: 0.9rem;
+    }
+
+    /* Progress bar */
+    .progress-wrap {
+      margin-bottom: 6px;
+    }
+
+    .progress-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 7px;
+      background: #e5e7eb;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 20%; /* Question 1 of 5 */
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 999px;
+      transition: width 0.4s ease;
+    }
+
+    /* Question */
+    .question-counter {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    .question-text {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    /* Options */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--option-bg);
+      border: 2px solid transparent;
+      border-radius: 14px;
+      padding: 14px 18px;
+      cursor: pointer;
+      transition: background 0.18s, border-color 0.18s, transform 0.12s;
+      text-decoration: none;
+    }
+
+    .option:hover {
+      background: var(--option-hover);
+      border-color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    .option.correct {
+      background: var(--correct);
+      border-color: var(--correct-border);
+    }
+
+    .option.wrong {
+      background: var(--wrong);
+      border-color: var(--wrong-border);
+    }
+
+    .option-letter {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #fff;
+      border: 2px solid #d1d5db;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--text-mid);
+      flex-shrink: 0;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    }
+
+    .option.correct .option-letter {
+      background: var(--correct-border);
+      border-color: var(--correct-border);
+      color: #fff;
+    }
+
+    .option.wrong .option-letter {
+      background: #f87171;
+      border-color: #f87171;
+      color: #fff;
+    }
+
+    .option-text {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.4;
+    }
+
+    .option-icon {
+      margin-left: auto;
+      font-size: 1.1rem;
+      opacity: 0;
+      transition: opacity 0.18s;
+    }
+
+    .option.correct .option-icon,
+    .option.wrong   .option-icon { opacity: 1; }
+
+    /* Next button */
+    .btn-next {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      box-shadow: 0 6px 20px rgba(59, 79, 200, 0.35);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn-next:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(59, 79, 200, 0.45);
+    }
+
+    .btn-next:active {
+      transform: translateY(0);
+    }
+
+    /* Footer dots */
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 22px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #d1d5db;
+    }
+
+    .dot.active {
+      background: var(--primary);
+      width: 22px;
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-card">
+
+    <!-- Title -->
+    <div class="quiz-header">
+      <h1 class="quiz-title">
+        <span class="emoji">🧠</span> Quiz Time
+      </h1>
+    </div>
+
+    <!-- Score + Timer -->
+    <div class="quiz-meta">
+      <span class="score-badge">Score: 0</span>
+      <span class="timer-badge">
+        <span class="clock-icon">⏱</span> 0:15
+      </span>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-wrap">
+      <div class="progress-label">Progress</div>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- Question -->
+    <div class="question-counter">Question 1 of 5</div>
+    <div class="question-text">
+      HTML ka full form?
+    </div>
+
+    <!-- Options -->
+    <div class="options-list">
+
+      <div class="option correct">
+        <div class="option-letter">A</div>
+        <span class="option-text">Hyper Text Markup Language</span>
+        <span class="option-icon">✅</span>
+      </div>
+
+      <div class="option">
+        <div class="option-letter">B</div>
+        <span class="option-text">High Text Machine Language</span>
+        <span class="option-icon">❌</span>
+      </div>
+
+      <div class="option">
+        <div class="option-letter">C</div>
+        <span class="option-text">Hyper Transfer Markup Language</span>
+        <span class="option-icon">❌</span>
+      </div>
+
+      <div class="option">
+        <div class="option-letter">D</div>
+        <span class="option-text">Hyper Text Multiple Language</span>
+        <span class="option-icon">❌</span>
+      </div>
+
+    </div>
+
+    <!-- Next Button -->
+    <button class="btn-next" onclick="change_question()">Next Question →</button>
+
+    <!-- Dot navigation -->
+    <div class="dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+  </div>
+
+</body>
+<script src="index.js"></script>
+</html>
