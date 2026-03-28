@@ -78,6 +78,7 @@ const questionCounter = document.querySelector('.question-counter');
 const questionText    = document.querySelector('.question-text');
 const optionsList     = document.querySelector('.options-list');
 const btnNext         = document.querySelector('.btn-next');
+const btnBack         = document.querySelector('.btn-back');
 const dotsWrap        = document.querySelector('.dots');
 const resultScreen    = document.getElementById('resultScreen');
 const quizCard        = document.querySelector('.quiz-card');
@@ -128,7 +129,7 @@ function renderQuestion() {
   buildDots();
 
   // Update button label
-  btnNext.textContent = currentIndex === total - 1 ? 'Finish Quiz 🎉' : 'Next Question →';
+  // btnNext.textContent = currentIndex === total - 1 ? 'Finish Quiz 🎉' : 'Next Question →';
 
   // Start countdown timer
   startTimer();
@@ -218,6 +219,15 @@ btnNext.addEventListener('click', () => {
   }
   moveNext();
 });
+
+// ─────────────────────────────────────────
+//  Back BUTTON
+// ─────────────────────────────────────────
+btnBack.addEventListener('click', () => {
+  currentIndex--;
+  renderQuestion();
+})
+
 
 function moveNext() {
   currentIndex++;
