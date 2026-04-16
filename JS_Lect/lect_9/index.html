@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Live Location Tracker</title>
+
+  <style>
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      font-family: Arial;
+    }
+
+    .box{
+      width: 420px;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    h1{
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    button{
+      padding: 12px 25px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover{
+      background: #0056b3;
+    }
+
+    .info{
+      margin-top: 25px;
+      text-align: left;
+    }
+
+    .info h2{
+      margin-top: 15px;
+      font-size: 20px;
+      color: #222;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="box">
+
+    <h1>📍 Live Location Tracker</h1>
+
+    <button onclick="getLocation()">
+      Get My Location
+    </button>
+
+    <div class="info">
+
+      <h2 id="city">City :</h2>
+
+      <h2 id="area">Area :</h2>
+
+      <h2 id="state">State :</h2>
+
+      <h2 id="country">Country :</h2>
+
+      <h2 id="pincode">Pincode :</h2>
+
+    </div>
+
+  </div>
+  <script src="index.js"></script>
+
+</body>
+</html>
