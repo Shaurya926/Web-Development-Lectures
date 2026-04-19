@@ -1,0 +1,27 @@
+body{
+    text-align: center;
+    font-family: Arial;
+    background-color: #f2f2f2;
+}
+
+.board{
+    width: 320px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    margin: 3px;
+    font-size: 40px;
+    cursor: pointer;
+    background: white;
+}
+
+#reset{
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+}
