@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Your JavaScript code here
+        console.log("hello");
+        console.error("ewww");
+        console.warn("byee");
+        var a = 5
+        var a = 10 // redeclaration and reassigning possible
+        let b = 10 // only reassigning possible
+        b = 30
+        const c = 90 // both not possible
+
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        console.log(window);
+        console.log(5 == "5");
+        console.log(5 + "5" + 1);
+        console.log(5 - "5");
+        console.log(typeof (typeof (5)));
+        let score = 100
+        let to = score == 100
+        console.log(to);
+        console.log(typeof (5));
+       // let a=Symbol('id');
+       // let b=Symbol('id');
+       // console.log(a==b);
+       let arr=[1,2,3,true,"string"]
+       for(let a of arr){
+        if(typeof(a)=="number")
+        console.log(a);
+        
+       }
+       for(let a in arr){
+        if(typeof(arr[a])=="number")
+        console.log(arr[a]);
+       }
+    </script>
+</body>
+
+</html>
