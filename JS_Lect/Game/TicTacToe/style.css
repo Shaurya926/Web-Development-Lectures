@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f8f7f4;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+}
+
+/* ── Layout ── */
+.ttt-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+/* ── Heading ── */
+.ttt-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+/* ── Status ── */
+.ttt-status {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  min-height: 28px;
+  text-align: center;
+}
+
+.ttt-status span {
+  transition: color 0.2s;
+}
+
+.turn-x { color: #378ADD !important; }
+.turn-o { color: #D85A30 !important; }
+
+/* ── Score cards ── */
+.ttt-score {
+  display: flex;
+  gap: 16px;
+}
+
+.score-card {
+  background: #efefec;
+  border-radius: 8px;
+  padding: 8px 20px;
+  text-align: center;
+  min-width: 64px;
+}
+
+.score-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.score-val {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.score-x   { color: #378ADD; }
+.score-o   { color: #D85A30; }
+.score-tie { color: #888; }
+
+/* ── Board ── */
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 0;
+  position: relative;
+}
+
+.ttt-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  pointer-events: none;
+}
+
+/* ── Cells ── */
+.ttt-cell {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: 'Syne', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: #1a1a1a;
+  background: transparent;
+  border: none;
+  position: relative;
+  transition: background 0.12s;
+}
+
+.ttt-cell:hover:not(.taken) {
+  background: #efefec;
+}
+
+.ttt-cell.taken {
+  cursor: default;
+}
+
+.ttt-cell.x-mark { color: #378ADD; }
+.ttt-cell.o-mark { color: #D85A30; }
+
+.ttt-cell.win-cell {
+  background: #e8f0fa;
+}
+
+/* ── Restart button ── */
+.ttt-btn {
+  margin-top: 0.5rem;
+  padding: 10px 28px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: transparent;
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: background 0.12s, transform 0.1s;
+}
+
+.ttt-btn:hover {
+  background: #efefec;
+}
+
+.ttt-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  body { background: #1a1a1a; }
+  .ttt-title, .score-label { color: #666; }
+  .ttt-status, .ttt-cell, .ttt-btn { color: #f0f0f0; }
+  .score-card, .ttt-cell:hover:not(.taken), .ttt-btn:hover { background: #2a2a2a; }
+  .ttt-btn { border-color: #444; }
+  .ttt-cell.win-cell { background: #1a2a3a; }
+  .ttt-lines line { stroke: #444; }
+}

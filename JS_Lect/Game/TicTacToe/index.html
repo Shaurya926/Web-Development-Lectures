@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tic Tac Toe</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f8f7f4;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .ttt-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .ttt-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #333;
+    }
+
+    .ttt-status {
+      font-size: 18px;
+      font-weight: 700;
+      min-height: 28px;
+      text-align: center;
+      color: #333;
+    }
+
+    .turn-x { color: #2980d9; }
+    .turn-o { color: #d85a30; }
+
+    .ttt-score {
+      display: flex;
+      gap: 16px;
+    }
+
+    .score-card {
+      background: #ebebeb;
+      border-radius: 8px;
+      padding: 8px 24px;
+      text-align: center;
+      min-width: 70px;
+    }
+
+    .score-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    .score-val { font-size: 24px; font-weight: 800; }
+    .score-x   { color: #2980d9; }
+    .score-o   { color: #d85a30; }
+    .score-tie { color: #888; }
+
+    .ttt-board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      position: relative;
+    }
+
+    .ttt-lines {
+      position: absolute;
+      top: 0; left: 0;
+      width: 300px; height: 300px;
+      pointer-events: none;
+    }
+
+    .ttt-cell {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 44px;
+      font-weight: 800;
+      font-family: inherit;
+      background: transparent;
+      border: none;
+      color: #333;
+      transition: background 0.12s;
+    }
+
+    .ttt-cell:hover:not(.taken) { background: #e8e8e4; }
+    .ttt-cell.taken { cursor: default; }
+    .ttt-cell.x-mark { color: #2980d9; }
+    .ttt-cell.o-mark { color: #d85a30; }
+    .ttt-cell.win-cell { background: #ddeeff; }
+
+    .ttt-btn {
+      padding: 10px 32px;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+      background: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #333;
+      cursor: pointer;
+      transition: background 0.12s, transform 0.1s;
+    }
+
+    .ttt-btn:hover  { background: #ebebeb; }
+    .ttt-btn:active { transform: scale(0.97); }
+
+    @media (prefers-color-scheme: dark) {
+      body { background: #1a1a1a; }
+      .ttt-title, .ttt-status, .ttt-cell, .ttt-btn { color: #f0f0f0; }
+      .score-card { background: #2a2a2a; }
+      .ttt-cell:hover:not(.taken) { background: #2a2a2a; }
+      .ttt-cell.win-cell { background: #1a2d42; }
+      .ttt-btn { background: #2a2a2a; border-color: #444; color: #f0f0f0; }
+      .ttt-btn:hover { background: #333; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ttt-wrap">
+  <div class="ttt-title">Tic Tac Toe</div>
+
+  <div class="ttt-score">
+    <div class="score-card">
+      <div class="score-label">X</div>
+      <div class="score-val score-x" id="score-x">0</div>
+    </div>
+    <div class="score-card">
+      <div class="score-label">Draws</div>
+      <div class="score-val score-tie" id="score-tie">0</div>
+    </div>
+    <div class="score-card">
+      <div class="score-label">O</div>
+      <div class="score-val score-o" id="score-o">0</div>
+    </div>
+  </div>
+
+  <div class="ttt-status"><span id="status">X's turn</span></div>
+
+  <div class="ttt-board">
+    <svg class="ttt-lines" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="100" y1="10" x2="100" y2="290" stroke="#ccc" stroke-width="2"/>
+      <line x1="200" y1="10" x2="200" y2="290" stroke="#ccc" stroke-width="2"/>
+      <line x1="10"  y1="100" x2="290" y2="100" stroke="#ccc" stroke-width="2"/>
+      <line x1="10"  y1="200" x2="290" y2="200" stroke="#ccc" stroke-width="2"/>
+    </svg>
+    <button class="ttt-cell" data-i="0"></button>
+    <button class="ttt-cell" data-i="1"></button>
+    <button class="ttt-cell" data-i="2"></button>
+    <button class="ttt-cell" data-i="3"></button>
+    <button class="ttt-cell" data-i="4"></button>
+    <button class="ttt-cell" data-i="5"></button>
+    <button class="ttt-cell" data-i="6"></button>
+    <button class="ttt-cell" data-i="7"></button>
+    <button class="ttt-cell" data-i="8"></button>
+  </div>
+
+  <button class="ttt-btn" id="restart-btn">New Game</button>
+</div>
+
+<script>
+  const WINS = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+
+  let board = Array(9).fill(null);
+  let current = 'X';
+  let over = false;
+  let scores = { X: 0, O: 0, T: 0 };
+
+  const cells      = document.querySelectorAll('.ttt-cell');
+  const statusEl   = document.getElementById('status');
+  const scoreXEl   = document.getElementById('score-x');
+  const scoreOEl   = document.getElementById('score-o');
+  const scoreTieEl = document.getElementById('score-tie');
+
+  function setStatus(msg, cls) {
+    statusEl.textContent = msg;
+    statusEl.className = cls || '';
+  }
+
+  function checkWin() {
+    for (const [a, b, c] of WINS) {
+      if (board[a] && board[a] === board[b] && board[a] === board[c]) return [a, b, c];
+    }
+    return null;
+  }
+
+  function handleClick(i) {
+    if (over || board[i]) return;
+    board[i] = current;
+
+    const cell = cells[i];
+    cell.textContent = current;
+    cell.classList.add('taken', current === 'X' ? 'x-mark' : 'o-mark');
+
+    const win = checkWin();
+    if (win) {
+      over = true;
+      win.forEach(idx => cells[idx].classList.add('win-cell'));
+      scores[current]++;
+      scoreXEl.textContent   = scores.X;
+      scoreOEl.textContent   = scores.O;
+      scoreTieEl.textContent = scores.T;
+      setStatus(current + ' wins! 🎉', current === 'X' ? 'turn-x' : 'turn-o');
+    } else if (board.every(Boolean)) {
+      over = true;
+      scores.T++;
+      scoreXEl.textContent   = scores.X;
+      scoreOEl.textContent   = scores.O;
+      scoreTieEl.textContent = scores.T;
+      setStatus("It's a draw!");
+    } else {
+      current = current === 'X' ? 'O' : 'X';
+      setStatus(current + "'s turn", current === 'X' ? 'turn-x' : 'turn-o');
+    }
+  }
+
+  cells.forEach(cell => {
+    cell.addEventListener('click', () => handleClick(Number(cell.dataset.i)));
+  });
+
+  document.getElementById('restart-btn').addEventListener('click', () => {
+    board   = Array(9).fill(null);
+    current = 'X';
+    over    = false;
+    cells.forEach(c => { c.textContent = ''; c.className = 'ttt-cell'; });
+    setStatus("X's turn", 'turn-x');
+  });
+
+  setStatus("X's turn", 'turn-x');
+</script>
+</body>
+</html>
