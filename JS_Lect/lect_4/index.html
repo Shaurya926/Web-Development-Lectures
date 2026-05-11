@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // this keyword
+        var a=20
+        {
+            var a=10 //Global scope
+            let c=30
+            console.log(c) //
+        }
+        console.log(a)
+        // function sum(){
+        //     let a=10
+        // }
+        // console.log(a)
+
+        // this keyword
+        var name="Shaurya"
+        let student={
+            id:1,
+            name:"Pppppp",
+            isPass:true,
+            sum:function(){ // arrow function => 'this' keyword will not call in window
+                console.log(this)
+            },
+            base:()=>{
+                console.log(this.name)
+                let s=()=>{
+                    console.log(this.name)
+                }
+                s();
+            }
+        }
+
+        // Clouser topic execution.
+        student.sum()
+
+        function outer(){
+            let userName="hello"
+            function inner(){
+                console.log(userName)
+            }
+            return inner
+        }
+        let fn=outer()
+        fn()
+    </script>
+</body>
+</html>
