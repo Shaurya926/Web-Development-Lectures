@@ -1,82 +1,84 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Countdown Timer</title>
-
+  <!-- My Countdown Timer -->
   <style>
-    body{
-      margin:0;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-      background:#0f172a;
-      color:white;
-      font-family:Arial;
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #0f172a;
+      color: white;
+      font-family: Arial;
     }
 
-    .timer{
-      text-align:center;
-      padding:30px;
-      border:2px solid white;
-      border-radius:20px;
-      box-shadow:0 0 20px cyan;
+    .timer {
+      text-align: center;
+      padding: 30px;
+      border: 2px solid white;
+      border-radius: 20px;
+      box-shadow: 0 0 20px cyan;
     }
 
-    h1{
-      margin-bottom:20px;
+    h1 {
+      margin-bottom: 20px;
     }
 
-    #countdown{
-      font-size:45px;
-      font-weight:bold;
+    #countdown {
+      font-size: 45px;
+      font-weight: bold;
     }
   </style>
 </head>
 
 <body>
 
-<div class="timer">
-  <h1>Countdown to 20 May 2026</h1>
-  <div id="countdown"></div>
-</div>
+  <div class="timer">
+    <h1>Countdown to 20 May 2026</h1>
+    <div id="countdown"></div>
+  </div>
 
-<script>
+  <script>
 
-const targetDate = new Date("2026-05-20T18:10:00+05:30");
+    const targetDate = new Date("2026-05-20T18:10:00+05:30");
 
-function updateCountdown(){
+    function updateCountdown() {
 
-  const now = new Date();
+      const now = new Date();
 
-  const diff = targetDate - now;
+      const diff = targetDate - now;
 
-  if(diff <= 0){
-    document.getElementById("countdown").innerHTML = "Time Up!";
-    return;
-  }
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "Time Up!";
+        return;
+      }
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
 
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24))
-  / (1000 * 60 * 60));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60));
 
-  const minutes = Math.floor((diff % (1000 * 60 * 60))
-  / (1000 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60))
+        / (1000 * 60));
 
-  const seconds = Math.floor((diff % (1000 * 60))
-  / 1000);
+      const seconds = Math.floor((diff % (1000 * 60))
+        / 1000);
 
-  document.getElementById("countdown").innerHTML =
-    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      document.getElementById("countdown").innerHTML =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-}
+    }
 
-setInterval(updateCountdown, 1000);
+    setInterval(updateCountdown, 1000);
 
-updateCountdown();
+    updateCountdown();
 
-</script>
+  </script>
 
 </body>
+
 </html>
